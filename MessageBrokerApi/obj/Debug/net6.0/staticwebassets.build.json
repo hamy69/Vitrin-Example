@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "SmJQYpA4My1Tfg4LcN2fBm/vr28GB/mxiCXsLbyFFrU=",
+  "Source": "MessageBrokerApi",
+  "BasePath": "_content/MessageBrokerApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

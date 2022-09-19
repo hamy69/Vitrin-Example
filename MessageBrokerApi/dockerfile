@@ -1,0 +1,19 @@
+# Get base SDK image from Microsoft
+FROM mcr.Microsoft.com/dotnet/sdk:6.0 AS build-env
+WORKDIR /app
+
+# Copy everything (the project files and build our release. also CSPROJ file and restore any dependencies (via NeGet))
+COPY . ./
+
+# Restore as distinct layers
+RUN dotnet restore
+
+# Build and publish a release
+RUN dotnet publish -c Release -o out
+
+# Build runtime image
+FROM mcr.Microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+EXPOSE 80
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "MessageBrokerApi.dll"]
